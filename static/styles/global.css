@@ -1,0 +1,32 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #dbdbdd;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
