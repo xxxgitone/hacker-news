@@ -7,32 +7,41 @@
       </header>
       <nav class="nav">
           <ul>
-              <li><i>R</i><a href="#">NEW</a></li>
-              <li><i>R</i><a href="#">COMMENTS</a></li>
-              <li><i>R</i><a href="#">SHOW</a></li>
-              <li><i>R</i><a href="#">ASK</a></li>
-              <li><i>R</i><a href="#">JOBS</a></li>
-              <li><i>R</i><a href="#">SUBMIT</a></li>
-              <li><i>R</i><a href="#">COMMENTS</a></li>
-              <li><i>R</i><a href="#">COMMENTS</a></li>               
+              <li v-for="menu in menus" v-show="menu.isShow" :class="{ active: menu.checked }">
+                <i :class="menu.icon"></i>
+                <a href="#" @click="updateMenu(menu)">{{ menu.name }}</a>
+              </li>         
           </ul>
       </nav>
+      <div class="users">
+        <a href="#"><i class="iconfont icon-users"></i></a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    ...mapState({
+      menus: 'menus'
+    })
+  },
+  methods: {
+    updateMenu (menu) {
+      this.$store.commit('UPDATE_MENU', menu.id)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 
 #app {
-  width: 75rem;
-  height: 38rem;
-  border: 1px solid red;
+  width: 86vw;
+  height: 90vh;
   font-size: 1rem;
 }
 
@@ -42,6 +51,8 @@ export default {
     background:white;
     display: flex;
     flex-wrap: wrap;
+    border-radius:6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 header.logo {
@@ -50,24 +61,85 @@ header.logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: red;
+  font-size:1rem;
 
   img {
-    width: 15%;
-    height: 30%;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 50%;
   }
 
   h1 {
-    width: 30%;
     width: 65%;
-    font-size: 1.25rem;
+    font-size: 1.25em;
     text-align: center;
   }
 }
 
 nav.nav {
+  width:100%;
+  height:70%;
 
+  ul {
+    display:flex;
+    flex-wrap: wrap;
+    font-size:0.80em;
+  }
+
+  ul li {
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    transition:all 0.2s;
+  }
+
+  ul li i {
+    color:#bdbdbd;
+    padding:1rem 1.5rem;
+    transition:all 0.2s;
+  }
+
+  ul li a {
+    display:block;
+    color:#bdbdbd;
+    padding:1rem 0;
+    letter-spacing:1px;
+    transition:all 0.2s;
+
+    &:hover {
+      color:#252525;
+      font-weight:bold;
+    }
+  }
+
+  ul li.active {
+    border-left:3px solid #ff6600;
+  }
+
+  ul li.active a, ul li.active i{
+    color:#000000;
+    font-weight:bold;
+  }
+
+}
+
+.users {
+  height:10%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  a {
+    display:block;
+    width:80%;
+    height:50%;
+    background:#f8f8f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
 }
 
 
