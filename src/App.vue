@@ -7,9 +7,8 @@
       </header>
       <nav class="nav">
           <ul>
-              <li v-for="menu in menus" v-show="menu.isShow" :class="{ active: menu.checked }">
-                <i :class="menu.icon"></i>
-                <a href="#" @click="updateMenu(menu)">{{ menu.name }}</a>
+              <li v-for="menu in menus" v-show="menu.isShow" :class="{ active: menu.checked }" @click="updateMenu(menu)">
+                <router-link :to="menu.to"><i :class="menu.icon"></i>{{ menu.name }}</router-link>
               </li>         
           </ul>
       </nav>
@@ -26,6 +25,11 @@
         </div>
         <span class="userName">xxxgit</span>
       </header>
+      <section class="content">
+        <div class="list">
+          <router-view></router-view>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -113,6 +117,7 @@ nav.nav {
     color:#bdbdbd;
     padding:1rem 1.5rem;
     transition:all 0.2s;
+    cursor: pointer;
   }
 
   ul li a {
@@ -167,6 +172,7 @@ div.main {
   display: flex;
   flex-wrap: wrap;
   font-size: 1rem;
+  overflow: hidden;
 
   @at-root {
     .top{
@@ -216,6 +222,23 @@ div.main {
 
 
     }
+  
+    .content {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .list {
+        height: 100%;
+        width: 92%;
+        background: white;
+        padding: 2em 2em 0 2em;
+      }
+    }
+  
   }
   
 }
