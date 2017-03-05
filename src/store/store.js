@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutations'
+import getters from './getters'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    title: '',
     menus: [
         { id: 1, name: 'WELCOME', isShow: true, checked: false, icon: 'iconfont icon-welcome' },
         { id: 2, name: 'NEW', isShow: true, checked: true, icon: 'iconfont icon-news2' },
@@ -17,7 +19,8 @@ const store = new Vuex.Store({
         { id: 8, name: 'SUBMIT', isShow: true, checked: false, icon: 'iconfont icon-submit-go' }
     ]
   },
-  mutations
+  mutations,
+  getters
 })
 
 export default store

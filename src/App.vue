@@ -17,16 +17,29 @@
         <a href="#"><i class="iconfont icon-users"></i></a>
       </div>
     </div>
+    <div class="main">
+      <header class="top">
+        <h2>{{ title }}</h2>
+        <div class="search">
+          <i class="iconfont icon-welcome"></i>
+          <input type="search" placeholder="search">
+        </div>
+        <span class="userName">xxxgit</span>
+      </header>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'app',
   computed: {
     ...mapState({
       menus: 'menus'
+    }),
+    ...mapGetters({
+      title: 'getTitle'
     })
   },
   methods: {
@@ -43,6 +56,7 @@ export default {
   width: 86vw;
   height: 90vh;
   font-size: 1rem;
+  display: flex;
 }
 
 .slideBar {
@@ -51,7 +65,8 @@ export default {
     background:white;
     display: flex;
     flex-wrap: wrap;
-    border-radius:6px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
@@ -140,6 +155,69 @@ nav.nav {
     justify-content:center;
     align-items:center;
   }
+}
+
+div.main {
+  width: 80%;
+  height: 100%;
+  background: #f7f7f7;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1rem;
+
+  @at-root {
+    .top{
+      height: 20%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        flex: 1 1 20%;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      .search {
+        flex: 1 1 60%;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+
+        i {
+          position: absolute;
+          top: 30%;
+          left: 52%;
+          color: #bdbdbd;
+        }
+
+        input[type="search"] {
+          width: 50%;
+          padding: 0.6em 2.1em;
+          color: #bdbdbd;
+          border: 0;
+          font-size: 1rem;
+          outline: none;
+          border-radius: 2em;
+          box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+      }
+
+      .userName {
+        display: block;
+        flex: 1 1 20%;
+        text-align: center;
+      }
+
+
+    }
+  }
+  
 }
 
 
