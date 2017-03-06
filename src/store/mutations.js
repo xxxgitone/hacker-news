@@ -10,6 +10,13 @@ const mutations = {
     menu.checked = true
     state.title = menu.name
     return state
+  },
+  /*  取消被选中的导航  */
+  [types.CANCLE_CHECKED] (state) {
+    state.menus.forEach(menu => {
+      menu.checked = false
+    })
+    state.title = ''
   }
 }
 

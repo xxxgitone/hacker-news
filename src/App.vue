@@ -3,7 +3,7 @@
     <div class="slideBar">
       <header class="logo">
         <img src="https://news.ycombinator.com/favicon.ico" alt="Hacker News">
-        <h1>Hacker News</h1>
+        <h1 @click="cancleChecked()"><router-link to="/">Hacker News</router-link></h1>
       </header>
       <nav class="nav">
           <ul>
@@ -35,20 +35,22 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'app',
   computed: {
     ...mapState({
-      menus: 'menus'
-    }),
-    ...mapGetters({
-      title: 'getTitle'
+      menus: 'menus',
+      title: 'title'
     })
   },
   methods: {
     updateMenu (menu) {
       this.$store.commit('UPDATE_MENU', menu.id)
+    },
+
+    cancleChecked () {
+      this.$store.commit('CANCLE_CHECKED')
     }
   }
 }
@@ -76,7 +78,7 @@ export default {
 
 header.logo {
   width: 100%;
-  height: 20%;
+  height: 18%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,6 +94,11 @@ header.logo {
     width: 65%;
     font-size: 1.25em;
     text-align: center;
+    
+  }
+
+  h1 a {
+    color: black;
   }
 }
 
@@ -145,7 +152,7 @@ nav.nav {
 }
 
 .users {
-  height:10%;
+  height:12%;
   width:100%;
   display:flex;
   justify-content:center;
