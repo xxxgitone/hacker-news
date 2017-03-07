@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import News from '../views/News'
-import Newest from '../views/Newest'
+import Newest from '../views/Newest.vue'
+import Top from '../views/Top.vue'
 
 Vue.use(Router)
 
@@ -10,11 +10,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Newest
+      component: Top
     },
     {
       path: '/news',
-      component: News
+      component: Newest
     }
   ]
 })

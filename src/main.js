@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/store'
+import fetchIdsByType from './api/api'
 
 Vue.config.productionTip = false
+
+console.log(fetchIdsByType('top'))
 
 /* eslint-disable no-new */
 new Vue({

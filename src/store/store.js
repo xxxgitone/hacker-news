@@ -19,6 +19,9 @@ const store = new Vuex.Store({
         { id: 8, name: 'SUBMIT', isShow: true, checked: false, icon: 'iconfont icon-submit-go', to: 'submit' }
     ]
   },
+  ids: {
+    top: []
+  },
   mutations
 })
 

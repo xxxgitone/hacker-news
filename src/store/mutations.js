@@ -1,4 +1,5 @@
 import * as types from './mutations-type'
+import fetchIdsByType from '../api/api'
 
 const mutations = {
   /*  更新选中菜单，和右边面板头部标题  */
@@ -17,6 +18,10 @@ const mutations = {
       menu.checked = false
     })
     state.title = ''
+  },
+  /* 获取个模块内容的ids */
+  [types.FETCH_IDS] (state, type) {
+    state.ids.type = fetchIdsByType(type)
   }
 }
 

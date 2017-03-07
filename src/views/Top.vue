@@ -4,7 +4,7 @@
 
 <script>
     export default {
-      name: 'news'
+      name: 'top'
     }
 </script>
 
