@@ -3,11 +3,17 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 // import getters from './getters'
 
+// 数据ids
+import topids from '../dataids/topids'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
     title: '',
+    ids: {
+      topids
+    },
     menus: [
         { id: 1, name: 'WELCOME', isShow: true, checked: false, icon: 'iconfont icon-welcome', to: 'welcome' },
         { id: 2, name: 'NEW', isShow: true, checked: false, icon: 'iconfont icon-news2', to: 'news' },
@@ -18,9 +24,6 @@ const store = new Vuex.Store({
         { id: 7, name: 'JOBS', isShow: true, checked: false, icon: 'iconfont icon-jobs', to: 'jobs' },
         { id: 8, name: 'SUBMIT', isShow: true, checked: false, icon: 'iconfont icon-submit-go', to: 'submit' }
     ]
-  },
-  ids: {
-    top: []
   },
   mutations
 })
