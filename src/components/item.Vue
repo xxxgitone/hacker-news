@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <ul>
+            <li>
+                <p>i</p>
+                <p>2</p>
+            </li>
+        </ul>
+    </div>
+</template>

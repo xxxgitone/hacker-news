@@ -14,6 +14,10 @@ export default new Router({
     },
     {
       path: '/news',
+      component: Top
+    },
+    {
+      path: '/newest',
       component: Newest
     }
   ]

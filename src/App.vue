@@ -3,7 +3,7 @@
     <div class="slideBar">
       <header class="logo">
         <img src="https://news.ycombinator.com/favicon.ico" alt="Hacker News">
-        <h1 @click="cancleChecked()"><router-link to="/">Hacker News</router-link></h1>
+        <h1 @click="cancleChecked()"><router-link to="/news">Hacker News</router-link></h1>
       </header>
       <nav class="nav">
           <ul>
@@ -233,7 +233,7 @@ div.main {
     .content {
       width: 100%;
       height: 100%;
-      overflow-y: scroll;
+      
       display: flex;
       justify-content: center;
       align-items: center;
@@ -242,7 +242,8 @@ div.main {
         height: 100%;
         width: 92%;
         background: white;
-        padding: 2em 2em 0 2em;
+        padding: 1em 2em 8em 2em;
+        overflow-y: scroll;
       }
     }
   
