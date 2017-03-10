@@ -4,8 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/store'
+import moment from 'moment'
 
 Vue.config.productionTip = false
+
+//  全局过滤器，用于处理时间
+Vue.filter('timeAgo', (timestamp) => {
+  return moment(timestamp).startOf('day').fromNow()
+})
 
 /* eslint-disable no-new */
 new Vue({

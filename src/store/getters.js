@@ -1,6 +1,8 @@
 const getters = {
   limitItem (state) {
-    return state.items.slice(0, state.limitNum)
+    //  按score数量的大小从到小排列
+    const newItems = state.items.sort((firstItem, nextItem) => nextItem.score > firstItem.score ? 1 : -1)
+    return newItems.slice(0, state.limitNum)
   }
 }
 

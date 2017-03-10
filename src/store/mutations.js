@@ -26,9 +26,23 @@ const mutations = {
       axios.get(` https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
         .then(res => {
           state.items.push(res.data)
-          console.log(state.items)
         })
     })
+  },
+  // 赞
+  [types.UPDATE_VOTED] (state, id) {
+    const item = state.items.find(item => item.id === id)
+    item.score += 1
+  },
+  //  隐藏
+  [types.HIDE_ITEM] (state, item) {
+    const index = state.items.indexOf(item)
+    state.items = [
+      ...state.items.slice(0, index),
+
+      ...state.items.slice(index + 1)
+    ]
+    return state
   }
 }
 
