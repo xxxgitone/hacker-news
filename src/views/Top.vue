@@ -4,9 +4,9 @@
             <li class="new-item" v-for="(item, index) in limitItem">
                 <div class="new-title">
                     <span class="indexNum">{{ index+=1 }}.</span>
-                    <span class="vote"></span>
+                    <span class="vote" @click="voted(item)"></span>
                     <span class="title">
-                        <a :href="item.url" class="url">{{ item.title }}</a>
+                        <a :href="item.url" class="url" target="_black">{{ item.title }}</a>
                         <span>(<a href="#">{{ item.type }}</a>)</span>
                     </span>
                 </div>
@@ -14,14 +14,15 @@
                     <span>{{ item.score }}</span> points by
                     <span><a href="#">{{ item.by }}</a></span>
                     <span class="timeago">
-                        <a href="">7 hour ago</a>
+                        <a href="">{{ item.time | timeAgo }}</a>
                     </span>
                     <span><a href="#">unvote</a></span>
-                    <span><a href="#">hide</a></span>
+                    <span @click="hideItem(item)"><a href="#">hide</a></span>
                     <span><a href="#">{{ item.kids.length }} comments</a></span>
                 </span>
             </li>
         </ul> 
+        <p v-if="items.length >= limitNum"><a href="#">More</a></p>
      </div>
 </template>
 
@@ -37,11 +38,20 @@
       },
       computed: {
         ...mapState({
-          items: 'items'
+          items: 'items',
+          limitNum: 'limitNum'
         }),
         ...mapGetters({
           limitItem: 'limitItem'
         })
+      },
+      methods: {
+        voted (item) {
+          this.$store.commit('UPDATE_VOTED', item.id)
+        },
+        hideItem (item) {
+          this.$store.commit('HIDE_ITEM', item)
+        }
       }
     }
 </script>
