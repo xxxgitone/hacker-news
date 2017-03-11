@@ -1,5 +1,8 @@
 <template>
     <div class="news">
+        <p class="loading" v-show="loading">
+          <span><i class="iconfont icon-loading"></i></span>
+        </p>
         <ul>
            <item v-for="(item, index) in limitItem" :item="item" :index="index+1"></item>
         </ul> 
@@ -13,13 +16,20 @@
 
     export default {
       name: 'top',
+      data () {
+        return {
+          loading: true
+        }
+      },
       components: {
         item
       },
       created () {
         const ids = this.$store.state.ids.topids
         this.$nextTick(() => {
-          this.$store.commit('FETCH_ITEMS', ids)
+          this.$store.dispatch('FETCH_ITEMS', ids).then(() => {
+            this.loading = false
+          })
         })
       },
       computed: {
@@ -37,7 +47,15 @@
 <style lang="scss">
     .news {
         width: 100%;
+        height: 100%;
         font-size: 0.9rem;
         background: white;
+    }
+    .loading {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 </style>
