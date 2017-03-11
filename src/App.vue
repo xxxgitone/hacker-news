@@ -20,7 +20,7 @@
       <header class="top">
         <h2>{{ title }}</h2>
         <div class="search">
-          <i class="iconfont icon-welcome"></i>
+          <i class="iconfont icon-search"></i>
           <input type="search" placeholder="search">
         </div>
         <span class="userName">xxxgit</span>
