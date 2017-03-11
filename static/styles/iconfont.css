@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1488604911759'); /* IE9*/
-  src: url('iconfont.eot?t=1488604911759#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1488604911759') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1488604911759') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1488604911759#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1489227599391'); /* IE9*/
+  src: url('iconfont.eot?t=1489227599391#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1489227599391') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1489227599391') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1489227599391#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -17,19 +17,23 @@
 
 .icon-lamb:before { content: "\f0007"; }
 
-.icon-comments:before { content: "\e6bf"; }
+.icon-users:before { content: "\e602"; }
 
-.icon-welcome:before { content: "\e633"; }
+.icon-search:before { content: "\e714"; }
 
-.icon-ask:before { content: "\e670"; }
+.icon-comments:before { content: "\e685"; }
+
+.icon-show:before { content: "\e639"; }
+
+.icon-loading:before { content: "\e611"; }
+
+.icon-news:before { content: "\e610"; }
+
+.icon-ask:before { content: "\e63b"; }
 
 .icon-jobs:before { content: "\e61b"; }
 
-.icon-chakan:before { content: "\e606"; }
-
-.icon-news2:before { content: "\e504"; }
+.icon-Welcome:before { content: "\e71d"; }
 
 .icon-submit-go:before { content: "\e666"; }
-
-.icon-users:before { content: "\e602"; }
 
