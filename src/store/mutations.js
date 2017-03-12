@@ -22,6 +22,7 @@ const mutations = {
   // 赞
   [types.UPDATE_VOTED] (state, id) {
     const item = state.items.find(item => item.id === id)
+    item.voted = true
     item.score += 1
   },
   //  隐藏

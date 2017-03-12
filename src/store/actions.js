@@ -17,8 +17,13 @@ const actions = {
     console.log('actions')
     state.items = []
     const itemIds = ids.map(id => fetchItem(id))
-    Promise.all(itemIds).then((data) => {
-      state.items = data
+    Promise.all(itemIds).then((datas) => {
+      datas.forEach(data => {
+        //  新增一个属性，用于记录点赞
+        Object.assign(data, {voted: false})
+      })
+      state.items = datas
+      state.loading = false
     })
 
     return Promise.resolve()

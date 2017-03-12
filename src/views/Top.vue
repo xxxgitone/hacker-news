@@ -1,10 +1,10 @@
 <template>
     <div class="news">
         <p class="loading" v-show="loading">
-          <span><i class="iconfont icon-loading"></i></span>
+          <img :src="loadingImg">
         </p>
         <ul>
-           <item v-for="(item, index) in limitItem" :item="item" :index="index+1"></item>
+           <item v-for="(item, index) in limitItem" :item="item" :index="index+1" :key="item.id"></item>
         </ul> 
         <p v-if="items.length >= limitNum"><a href="#">More</a></p>
      </div>
@@ -13,12 +13,13 @@
 <script>
     import { mapState, mapGetters } from 'vuex'
     import item from '../components/Item.vue'
+    import loadingImg from '../../static/img/loading.png'
 
     export default {
       name: 'top',
       data () {
         return {
-          loading: true
+          loadingImg: loadingImg
         }
       },
       components: {
@@ -28,14 +29,15 @@
         const ids = this.$store.state.ids.topids
         this.$nextTick(() => {
           this.$store.dispatch('FETCH_ITEMS', ids).then(() => {
-            this.loading = false
+            this.$store.state.loading = true
           })
         })
       },
       computed: {
         ...mapState({
           items: 'items',
-          limitNum: 'limitNum'
+          limitNum: 'limitNum',
+          loading: 'loading'
         }),
         ...mapGetters({
           limitItem: 'limitItem'
@@ -47,12 +49,11 @@
 <style lang="scss">
     .news {
         width: 100%;
-        height: 100%;
         font-size: 0.9rem;
         background: white;
     }
     .loading {
-      height: 100%;
+      height: 20em;
       width: 100%;
       display: flex;
       justify-content: center;

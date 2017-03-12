@@ -2,7 +2,7 @@
      <li class="new-item">
         <div class="new-title">
             <span class="indexNum">{{ index }}.</span>
-            <span class="vote" @click="voted(item)"></span>
+            <span v-show="!item.voted" class="vote" @click="voted(item)"></span>
             <span class="title">
                 <a :href="item.url" class="url" target="_black">{{ item.title }}</a>
                 <span>(<a href="#">{{ item.type }}</a>)</span>
@@ -14,7 +14,7 @@
             <span class="timeago">
                 <a href="">{{ item.time | timeAgo }}</a>
             </span>
-            <span><a href="#">unvote</a></span>
+            <span v-show="item.voted" @click="item.voted=!item.voted"><a href="#">unvote</a></span>
             <span @click="hideItem(item)"><a href="#">hide</a></span>
             <span><a href="#">{{ item.kids.length }} comments</a></span>
         </span>
@@ -64,6 +64,11 @@
             border-bottom-color: #9a9a9a;
             margin: 0 0.5em;
             cursor: pointer;
+        }
+
+        .title {
+            display: block;
+            padding: 0 0.32em;
         }
 
         .url {

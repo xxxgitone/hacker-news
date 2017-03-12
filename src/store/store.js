@@ -13,6 +13,7 @@ const store = new Vuex.Store({
   state: {
     title: '',
     items: [],
+    loading: false,
     limitNum: 15,
     ids: {
       topids
