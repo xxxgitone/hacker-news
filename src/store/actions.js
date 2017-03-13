@@ -14,7 +14,6 @@ function fetchItem (id) {
 const actions = {
   /* 获取个模块内容 */
   [types.FETCH_ITEMS] ({ state }, ids) {
-    console.log('actions')
     state.items = []
     const itemIds = ids.map(id => fetchItem(id))
     Promise.all(itemIds).then((datas) => {

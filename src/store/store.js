@@ -13,6 +13,7 @@ const store = new Vuex.Store({
   state: {
     title: '',
     items: [],
+    user: {},
     loading: false,
     limitNum: 15,
     ids: {

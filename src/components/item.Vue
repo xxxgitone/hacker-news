@@ -2,7 +2,7 @@
      <li class="new-item">
         <div class="new-title">
             <span class="indexNum">{{ index }}.</span>
-            <span v-show="!item.voted" class="vote" @click="voted(item)"></span>
+            <span :class="{hide: item.voted}" class="vote" @click="voted(item)"></span>
             <span class="title">
                 <a :href="item.url" class="url" target="_black">{{ item.title }}</a>
                 <span>(<a href="#">{{ item.type }}</a>)</span>
@@ -10,7 +10,7 @@
         </div>
         <span class="meta">
             <span>{{ item.score }}</span> points by
-            <span><a href="#">{{ item.by }}</a></span>
+            <span><router-link :to="'/user/' + item.by">{{ item.by }}</router-link></span>
             <span class="timeago">
                 <a href="">{{ item.time | timeAgo }}</a>
             </span>
@@ -62,14 +62,14 @@
             overflow: hidden;
             border: 0.45em solid transparent;
             border-bottom-color: #9a9a9a;
-            margin: 0 0.5em;
+            margin: 0 0.3em;
             cursor: pointer;
         }
 
-        .title {
-            display: block;
-            padding: 0 0.32em;
+        .hide {
+            visibility: hidden;
         }
+
 
         .url {
             color:black;
@@ -94,4 +94,5 @@
             border-left: 1px solid #9a9a9a;
         }
     }
+
 </style>

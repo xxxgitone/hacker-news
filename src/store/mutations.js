@@ -1,4 +1,5 @@
 import * as types from './mutations-type'
+import { fetchUser } from '../api/api'
 // import axios from 'axios'
 
 const mutations = {
@@ -34,6 +35,12 @@ const mutations = {
       ...state.items.slice(index + 1)
     ]
     return state
+  },
+  //  获取user
+  [types.FETCH_USER] (state, id) {
+    fetchUser(id).then(data => {
+      state.user = data
+    })
   }
 }
 
