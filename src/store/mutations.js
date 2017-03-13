@@ -20,6 +20,10 @@ const mutations = {
     })
     state.title = ''
   },
+  //  更新loading状态
+  [types.UODATE_LOADING] (state) {
+    state.loading = false
+  },
   // 赞
   [types.UPDATE_VOTED] (state, id) {
     const item = state.items.find(item => item.id === id)

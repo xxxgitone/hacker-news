@@ -1,19 +1,9 @@
 import * as types from './mutations-type'
-import axios from 'axios'
-
-//  获取单个item
-function fetchItem (id) {
-  return new Promise(function (resolve, reject) {
-    axios.get(` https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
-      .then(res => {
-        resolve(res.data)
-      })
-  })
-}
+import { fetchItem } from '../api/api'
 
 const actions = {
   /* 获取个模块内容 */
-  [types.FETCH_ITEMS] ({ state }, ids) {
+  [types.FETCH_ITEMS] ({ commit, state }, ids) {
     state.items = []
     const itemIds = ids.map(id => fetchItem(id))
     Promise.all(itemIds).then((datas) => {
@@ -22,7 +12,8 @@ const actions = {
         Object.assign(data, {voted: false})
       })
       state.items = datas
-      state.loading = false
+      //  这里可以直接写state.loading = false， 为了体验actions
+      commit('UODATE_LOADING')
     })
 
     return Promise.resolve()

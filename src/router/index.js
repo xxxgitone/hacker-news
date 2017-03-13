@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Newest from '../views/Newest.vue'
 import Top from '../views/Top.vue'
 import User from '../views/User.vue'
+import Comment from '../views/Comments.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,10 @@ export default new Router({
     {
       path: '/user/:id',
       component: User
+    },
+    {
+      path: '/item/:id',
+      component: Comment
     }
   ]
 })

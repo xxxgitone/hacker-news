@@ -12,7 +12,7 @@
             <span>{{ item.score }}</span> points by
             <span><router-link :to="'/user/' + item.by">{{ item.by }}</router-link></span>
             <span class="timeago">
-                <a href="">{{ item.time | timeAgo }}</a>
+                <router-link :to="'/item/' + item.id">{{ item.time | timeAgo }}</router-link>
             </span>
             <span v-show="item.voted" @click="item.voted=!item.voted"><a href="#">unvote</a></span>
             <span @click="hideItem(item)"><a href="#">hide</a></span>
