@@ -3,7 +3,7 @@
         <p><span>user:</span><span>{{ user.id }}</span></p>
         <p><span>created:</span><span>{{ user.created | timeAgo }}</span></p>
         <p><span>karma:</span><span>{{ user.karma }}</span></p>
-        <p><span>about:</span><span><a href="">submitted</a></span></p>        
+        <p><span>about:</span><span><a href="#">submitted</a></span></p>        
     </div>
 </template>
 
