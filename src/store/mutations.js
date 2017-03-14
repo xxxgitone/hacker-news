@@ -34,6 +34,7 @@ const mutations = {
   [types.HIDE_ITEM] (state, item) {
     const index = state.items.indexOf(item)
     state.items = [
+      // 不会影响原数组
       ...state.items.slice(0, index),
 
       ...state.items.slice(index + 1)
