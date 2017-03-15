@@ -17,6 +17,15 @@ const actions = {
     })
 
     return Promise.resolve()
+  },
+  //  获取评论
+  [types.FETCH_COMMENTS] ({ state }, ids) {
+    state.comments = []
+    //  获取单个评论和获取单个item的方法一样
+    const commentIds = ids.map(id => fetchItem(id))
+    Promise.all(commentIds).then((datas) => {
+      state.comments = datas
+    })
   }
 }
 

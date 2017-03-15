@@ -5,4 +5,5 @@ export const UODATE_LOADING = 'UODATE_LOADING'
 export const UPDATE_VOTED = 'UPDATE_VOTED'
 export const HIDE_ITEM = 'HIDE_ITEM'
 export const FETCH_USER = 'FETCH_USER'
+export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 
