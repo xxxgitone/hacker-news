@@ -24,6 +24,7 @@
           <input type="search" placeholder="search">
         </div>
         <span class="userName">xxxgit</span>
+        <span class="login"><router-link to="/login">login</router-link></span>
       </header>
       <section class="content">
         <div class="list">
@@ -223,10 +224,17 @@ div.main {
 
       }
 
-      .userName {
+      .userName, .login {
         display: block;
-        flex: 1 1 20%;
+        flex: 1 1 10%;
         text-align: center;
+      }
+
+      .login {
+        text-align: left;
+        border-left: 1px solid black;
+        padding-left: 0.5em;
+
       }
 
 
