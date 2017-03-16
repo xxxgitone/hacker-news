@@ -5,42 +5,27 @@
          <textarea name="comment" cols="70" rows="7"></textarea>
          <button type="submit">Add Comment</button>
       </div>
-
       <div class="kid-comment">
-        
-        <div class="comment-details" v-for="comment in comments">
-        <div class="title">
-            <span class="vote"></span>
-            <span><router-link :to="'/user/' + comment.by">{{ comment.by }}</router-link></span>
-            <span class="timeago">{{ comment.time | timeAgo }}</span>
-            <span class="toggle"><a href="#">[-]</a></span>
-        </div>
-        <!--comment.text为html，为了输出html，使用v-html-->
-        <div class="comment-text" v-html="comment.text"></div>
-    </div>
-
+        <comment v-for="comment in comments" :id="comment.id" :key="comment.id"></comment>
       </div>
-
-
     </div>
 </template>
 
 <script>
     import item from '../components/Item.vue'
-    // import comment from '../components/Comment.vue'
+    import comment from '../components/Comment.vue'
     import { mapState } from 'vuex'
     export default {
-      name: 'comment',
+      name: 'comments',
       components: {
-        item
+        item,
+        comment
       },
       created () {
-        const id = Number(this.$route.params.id)
-        const item = this.$store.state.items.find(item => item.id === id)
-        const ids = item.kids
-        if (ids) {
-          this.$store.dispatch('FETCH_COMMENTS', ids)
-        }
+        this.fetchComment()
+      },
+      watch: {
+        '$route': 'fetchComment'
       },
       computed: {
         ...mapState({
@@ -51,6 +36,16 @@
           const id = Number(this.$route.params.id)
           const item = this.$store.state.items.find(item => item.id === id)
           return item
+        }
+      },
+      methods: {
+        fetchComment () {
+          const id = Number(this.$route.params.id)
+          const item = this.$store.state.items.find(item => item.id === id)
+          const ids = item.kids
+          if (ids && ids.length) {
+            this.$store.dispatch('FETCH_COMMENTS', ids)
+          }
         }
       }
     }
