@@ -31,7 +31,8 @@
       },
       computed: {
         ...mapState({
-          items: 'items',
+          //  两种方式，字面量方式和函数方式
+          items: state => state.items,
           limitNum: 'limitNum',
           loading: 'loading'
         }),

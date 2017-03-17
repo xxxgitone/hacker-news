@@ -46,7 +46,28 @@ const mutations = {
     fetchUser(id).then(data => {
       state.user = data
     })
+  },
+
+  //  实现数据双向绑定
+  [types.UPDATE_USERNAME] (state, username) {
+    state.loginUser.id = username
+    console.log(state.loginUser.id)
+  },
+
+  [types.UPDATE_PASSWORD] (state, password) {
+    state.loginUser.password = password
+    console.log(state.loginUser.password)
+  },
+
+  [types.CREATED_ACCOUNT] (state) {
+    const loginUser = {
+      username: state.loginUser.id.trim(),
+      password: state.loginUser.password,
+      created: new Date()
+    }
+    localStorage.setItem('user', JSON.stringify(loginUser))
   }
+
 }
 
 export default mutations

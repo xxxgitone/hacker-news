@@ -12,8 +12,15 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     title: '',
+    //  用于存储注册用户信息
+    loginUser: {
+      id: '',
+      password: '',
+      created: ''
+    },
     items: [],
     comments: [],
+    //  用于存储hacker-news官方api中用户信息
     user: {},
     loading: false,
     limitNum: 15,
