@@ -16,7 +16,7 @@
             </span>
             <span v-show="item.voted" @click="item.voted=!item.voted"><a href="#">unvote</a></span>
             <span @click="hideItem(item)"><a href="#">hide</a></span>
-            <span><a href="#">{{ item.kids.length }} comments</a></span>
+            <span><router-link :to="'/item/' + item.id">{{ item.kids.length }} comments</router-link></span>
         </span>
     </li>
 </template>
