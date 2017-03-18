@@ -10,6 +10,52 @@ vue全家桶练手项目，并没有很复杂，毕竟本人也不是什么很�
 界面不同官网，是一个新的界面展示。
 
 
+## 主目录信息
+
+	─src
+	│  │  App.vue
+	│  │  main.js
+	│  │  
+	│  ├─api
+	│  │      api.js     //数据操作
+	│  │      
+	│  ├─assets
+	│  │      logo.png
+	│  │      
+	│  ├─components
+	│  │      Comment.vue
+	│  │      Item.vue
+	│  │      Loading.vue
+	│  │      
+	│  ├─dataids         //模拟ids
+	│  │      index.js
+	│  │      topids.js
+	│  │      
+	│  ├─router        //路由
+	│  │      index.js
+	│  │      
+	│  ├─store 
+	│  │      actions.js
+	│  │      getters.js
+	│  │      mutations-type.js
+	│  │      mutations.js
+	│  │      store.js
+	│  │      
+	│  └─views
+	│          Comments.vue
+	│          Login.vue
+	│          Newest.vue
+	│          Top.vue
+	│          User.vue
+
+
+
+## 效果展示
+![主界面][3]
+
+![评论展示][4]
+
+![简单登录][5]
 
 
 ## 运行
@@ -24,6 +70,8 @@ vue全家桶练手项目，并没有很复杂，毕竟本人也不是什么很�
 	npm run dev
 ```
 
-
   [1]: https://firebase.google.com/
   [2]: https://github.com/HackerNews/API
+  [3]: ./images/1.gif "1.gif"
+  [4]: ./images/2.gif "2.gif"
+  [5]: ./images/3.gif "3.gif"
