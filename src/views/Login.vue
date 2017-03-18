@@ -12,7 +12,7 @@
             </p>
             <p><button type="submit">LOGIN</button></p>
         </form>
-        <form class="create">
+        <form class="create" @submit.prevent="submitInfo">
             <h2>Create Account</h2>
             <p>
                 <label for="userName">username: </label>
@@ -22,7 +22,7 @@
                 <label for="password">password: </label>
                 <input type="password" name="password" id="password" v-model="password">
             </p>
-            <p><button @submit.prevent="submitInfo">create account</button></p>
+            <p><button>create account</button></p>
         </form>
     </div>
 </template>
@@ -51,6 +51,9 @@
       methods: {
         submitInfo () {
           this.$store.commit('CREATED_ACCOUNT')
+          this.$router.push({
+            path: '/news'
+          })
         }
       }
     }

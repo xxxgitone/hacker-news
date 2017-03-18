@@ -61,13 +61,20 @@ const mutations = {
 
   [types.CREATED_ACCOUNT] (state) {
     const loginUser = {
-      username: state.loginUser.id.trim(),
+      id: state.loginUser.id.trim(),
       password: state.loginUser.password,
-      created: new Date()
+      created: new Date(),
+      logged: true
     }
+    //  因为这里有几个属性是没有输入的，所以保存之前从新赋值一次，以便更新state
+    state.loginUser = loginUser
     localStorage.setItem('user', JSON.stringify(loginUser))
-  }
+  },
 
+  [types.GET_USERINFO] (state) {
+    //  创建用户的时候包含一个logged状态属性，创建的时候获取，记录登录状态
+    state.loginUser = JSON.parse(localStorage.getItem('user'))
+  }
 }
 
 export default mutations

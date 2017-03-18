@@ -23,8 +23,9 @@
           <i class="iconfont icon-search"></i>
           <input type="search" placeholder="search">
         </div>
-        <span class="userName">xxxgit</span>
-        <span class="login"><router-link to="/login">login</router-link></span>
+        <span class="userName" v-show="logged">{{ user.id }}</span>
+        <span class="login" v-show="!logged"><router-link to="/login">login</router-link></span>
+        <span class="login" v-show="logged"><a href="#" @click="logout">logout</a></span>
       </header>
       <section class="content">
         <div class="list">
@@ -41,11 +42,18 @@
 import { mapState } from 'vuex'
 export default {
   name: 'app',
+  created () {
+    this.$store.commit('GET_USERINFO')
+  },
   computed: {
     ...mapState({
       menus: 'menus',
-      title: 'title'
-    })
+      title: 'title',
+      logged: state => state.loginUser.logged
+    }),
+    user () {
+      return this.$store.state.loginUser
+    }
   },
   methods: {
     updateMenu (menu) {
@@ -54,6 +62,12 @@ export default {
 
     cancleChecked () {
       this.$store.commit('CANCLE_CHECKED')
+    },
+    logout () {
+      const user = this.$store.state.loginUser
+      user.logged = false
+      //  将改变状态的用户重新设置
+      localStorage.setItem('user', user)
     }
   }
 }
@@ -199,7 +213,7 @@ div.main {
       }
 
       .search {
-        flex: 1 1 60%;
+        flex: 1 1 55%;
         display: flex;
         justify-content: flex-end;
         position: relative;
@@ -225,6 +239,7 @@ div.main {
       }
 
       .userName, .login {
+        margin-left: 1em;
         display: block;
         flex: 1 1 10%;
         text-align: center;

@@ -16,8 +16,10 @@ const store = new Vuex.Store({
     loginUser: {
       id: '',
       password: '',
-      created: ''
+      created: '',
+      logged: false
     },
+    logged: false,
     items: [],
     comments: [],
     //  用于存储hacker-news官方api中用户信息
