@@ -26,6 +26,19 @@ const actions = {
     Promise.all(commentIds).then((datas) => {
       state.comments = datas
     })
+  },
+
+  [types.LOGIN_ACCOUNT] ({ state, commit }) {
+    let localUser = JSON.parse(localStorage.getItem('user'))
+    let user = state.loginUser
+    if (localUser.id !== user.id || localUser.password !== user.password) {
+      alert('密码或用户名错误')
+    } else {
+      Object.assign(localUser, {logged: true})
+      localStorage.setItem('user', JSON.stringify(localUser))
+      commit('GET_USERINFO')
+      return Promise.resolve()
+    }
   }
 }
 

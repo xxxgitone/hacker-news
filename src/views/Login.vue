@@ -1,6 +1,6 @@
 <template>
     <div class="login-create">
-        <form class="login">
+        <form class="login" @submit.prevent="login">
             <h2>LOGIN</h2>
             <p>
                 <label for="userName">username: </label>
@@ -10,7 +10,7 @@
                 <label for="password">password: </label>
                 <input type="password" name="password" id="password">
             </p>
-            <p><button type="submit">LOGIN</button></p>
+            <p><button>LOGIN</button></p>
         </form>
         <form class="create" @submit.prevent="submitInfo">
             <h2>Create Account</h2>
@@ -53,6 +53,13 @@
           this.$store.commit('CREATED_ACCOUNT')
           this.$router.push({
             path: '/news'
+          })
+        },
+        login () {
+          this.$store.dispatch('LOGIN_ACCOUNT').then(() => {
+            this.$router.push({
+              path: '/news'
+            })
           })
         }
       }

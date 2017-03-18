@@ -67,7 +67,7 @@ export default {
       const user = this.$store.state.loginUser
       user.logged = false
       //  将改变状态的用户重新设置
-      localStorage.setItem('user', user)
+      localStorage.setItem('user', JSON.stringify(user))
     }
   }
 }
