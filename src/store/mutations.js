@@ -72,8 +72,8 @@ const mutations = {
   },
 
   [types.GET_USERINFO] (state) {
-    //  创建用户的时候包含一个logged状态属性，创建的时候获取，记录登录状态
-    state.loginUser = JSON.parse(localStorage.getItem('user'))
+    let loginUser = JSON.parse(localStorage.getItem('user'))
+    loginUser && (state.loginUser = loginUser)
   }
 }
 
